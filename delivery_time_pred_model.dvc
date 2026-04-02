@@ -1,0 +1,6 @@
+outs:
+- md5: 34d7c793a4629999c985a57e9a6c53f0.dir
+  size: 149237688
+  nfiles: 1
+  hash: md5
+  path: delivery_time_pred_model
