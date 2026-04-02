@@ -103,16 +103,16 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: f6dd7986b37a2b76c13a9679fd6bdf31
-      size: 149117768
+      md5: 1d94295efc015783eb5f2338093a79ac
+      size: 149229224
     - path: models/power_transformer.joblib
       hash: md5
       md5: 457905ff6ff6893c15eae3a24c46c4c5
       size: 805
     - path: models/stacking_regressor.joblib
       hash: md5
-      md5: 1263db0e1525a444035f6b1179bc895e
-      size: 149106170
+      md5: 958af76b17320d3f53b68ffcbb1657ea
+      size: 149217642
   evaluation:
     cmd: python src/models/evaluation.py
     deps:
@@ -126,14 +126,25 @@ stages:
       size: 4060457
     - path: models/model.joblib
       hash: md5
-      md5: f6dd7986b37a2b76c13a9679fd6bdf31
-      size: 149117768
+      md5: 1d94295efc015783eb5f2338093a79ac
+      size: 149229224
     - path: src/models/evaluation.py
       hash: md5
-      md5: aa2c6a29e5fc90ee44f44d8c05c913a8
-      size: 6069
+      md5: ae2400886f94c5a7d3e97ce2f10f793f
+      size: 5918
     outs:
     - path: run_information.json
       hash: md5
-      md5: 82c553b87f4ce76c5931f2dc4f027d8d
+      md5: 808cb1b9762603d4435d8c909df1c61e
       size: 220
+  register_model:
+    cmd: python src/models/register_model.py
+    deps:
+    - path: run_information.json
+      hash: md5
+      md5: 808cb1b9762603d4435d8c909df1c61e
+      size: 220
+    - path: src/models/register_model.py
+      hash: md5
+      md5: 02a0790fdf72ca64208e164cbbd41bbb
+      size: 2369
