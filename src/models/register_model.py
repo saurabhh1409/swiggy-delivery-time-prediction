@@ -5,8 +5,6 @@ from pathlib import Path
 from mlflow import MlflowClient
 import logging
 import mlflow.client
-import os
-import shutil
 
 
 # create logger
@@ -70,18 +68,21 @@ if __name__ == "__main__":
     registered_model_name = model_version.name
     logger.info(f"The latest model version in model registry is {registered_model_version}")
     
-    # update the stage of the model to staging
+    # initialize mlflow client
     client = MlflowClient()
+    
+    # push model to Staging
     client.transition_model_version_stage(
         name=registered_model_name,
         version=registered_model_version,
         stage="Staging"
     )
-    
     logger.info("Model pushed to Staging stage")
-
-    # Save model locally for DVC tracking
-    os.makedirs(root_path / "delivery_time_pred_model", exist_ok=True)
-    shutil.copy(root_path / "models" / "model.joblib", 
-                root_path / "delivery_time_pred_model" / "model.joblib")
-    logger.info("Model copied to delivery_time_pred_model/model.joblib")
+    
+    # push model to Production
+    client.transition_model_version_stage(
+        name=registered_model_name,
+        version=registered_model_version,
+        stage="Production"
+    )
+    logger.info("Model pushed to Production stage")

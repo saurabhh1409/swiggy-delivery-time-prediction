@@ -54,17 +54,8 @@ stages:
       - run_information.json:
           cache: false
 
-  # register_model:
-  #   cmd: python src/models/register_model.py
-  #   deps:
-  #     - src/models/register_model.py
-  #     - run_information.json
-
   register_model:
     cmd: python src/models/register_model.py
     deps:
       - src/models/register_model.py
       - run_information.json
-      - models/model.joblib
-    outs:
-      - delivery_time_pred_model/model.joblib
