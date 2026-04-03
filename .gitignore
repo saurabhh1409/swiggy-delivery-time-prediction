@@ -89,4 +89,3 @@ target/
 .mypy_cache/
 /run_information.json
 delivery_time_pred_model/
-/delivery_time_pred_model

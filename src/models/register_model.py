@@ -5,6 +5,8 @@ from pathlib import Path
 from mlflow import MlflowClient
 import logging
 import mlflow.client
+import os
+import shutil
 
 
 # create logger
@@ -77,3 +79,9 @@ if __name__ == "__main__":
     )
     
     logger.info("Model pushed to Staging stage")
+
+    # Save model locally for DVC tracking
+    os.makedirs(root_path / "delivery_time_pred_model", exist_ok=True)
+    shutil.copy(root_path / "models" / "model.joblib", 
+                root_path / "delivery_time_pred_model" / "model.joblib")
+    logger.info("Model copied to delivery_time_pred_model/model.joblib")
