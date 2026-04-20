@@ -1,7 +1,8 @@
 Swiggy-Delivery-Time-Prediction
 ==============================
 
-Build ML project that predicts food delivery time in minutes
+Build ML project that predicts food delivery time in minutes.
+This project aims to predict food delivery time using machine learning to improve operational efficiency and customer satisfaction in food delivery platforms like Swiggy.
 
 Project Organization
 ------------
